@@ -1,6 +1,6 @@
-Files = new FS.Collection("files", {
-  stores: [new FS.Store.GridFS("filesStore")]
-});
+//Files = new FS.Collection("files", {
+  //stores: [new FS.Store.GridFS("filesStore")]
+//});
 
 PatSchema = {};
 PatSchema.Schema = new SimpleSchema({

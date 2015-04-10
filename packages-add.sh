@@ -6,8 +6,8 @@ meteor add aldeed:autoform
 meteor add aldeed:autoform-bs-datepicker
 meteor add aldeed:collection2
 meteor add aldeed:simple-schema
-meteor add cfs:gridfs
-meteor add cfs:standard-packages
+#meteor add cfs:gridfs
+#meteor add cfs:standard-packages
 meteor add chart:chart
 meteor add chhib:morris
 meteor add d3
@@ -23,4 +23,6 @@ meteor add pfafman:font-awesome-4
 meteor add sacha:spin
 meteor add styling
 meteor add userman
+meteor add avatar
+meteor add appointment
 meteor add vsivsi:job-collection
