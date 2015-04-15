@@ -291,15 +291,19 @@
         <div class="col-lg-12 col-sm-0">
           <div class="row">
 			 <div class="col-lg-3">
+				 {{#if isInRole 'noinfo'}}
 				 <h2>{{name.name}}</h2>
-				<!--<ul class="breadcrumb">
-				  <li>
-					<a href="index.html">Home</a>
-				  </li>
-				  <li>
-					App Views
-				  </li>
-				</ul>-->
+					<button class="btn btn-white request" type="button"><i class="fa fa-question"></i>&nbsp;HELP</button>
+				{{else}}
+					<!--<ul class="breadcrumb">
+					  <li>
+						<a href="index.html">Home</a>
+					  </li>
+					  <li>
+						App Views
+					  </li>
+					</ul>-->
+				{{/if}}
 			</div>
             <div class="col-lg-8 col-lg-offset-1">
 				<div class="pull-right">
@@ -342,6 +346,11 @@
 
 </template>
 <template name="LayoutAdmin">
+{{#if Template.subscriptionsReady}}
+
+{{else}}
+    Loading.. NewSettings
+{{/if}}
   <div id="wrapper">
 	  {{>LayoutAdminLeftPane}}
 	  {{>LayoutAdminCentrePane}}

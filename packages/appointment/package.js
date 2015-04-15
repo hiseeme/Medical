@@ -5,15 +5,17 @@ Package.describe({
 
 
 Package.on_use(function (api, where) {
-  api.export(['Workplace','Cases','Appointments','Workplaceform']);
-  api.use(['accounts-base','accounts-password','aldeed:simple-schema','aldeed:collection2','mongo','underscore']);
+  api.export(['Appointments','Notifications']);
+  api.export([],'client');
+  api.use(['userman','accounts-base','accounts-password','aldeed:simple-schema','aldeed:collection2','aldeed:autoform','mongo','underscore']);
   api.add_files([
   'client/js/collection.js'
+  ,'client/js/autoform.js'
   ], 'client'); 
   api.add_files([
-  'server/js/collection.js'
+  'server/js/collections/collection.js'
   ,'server/js/posts.js'
-  ,'server/js/publication.js'
+  ,'server/js/security/publication.js'
   ], 'server');
   api.add_files([
   'common/js/collection.js'

@@ -2,7 +2,10 @@ Template.main.helpers({
 	Layouttemplate: function(){
 		template = Session.get("role");
 		loggedin = 	Meteor.userId();
-		if(_.contains(Roles.getRolesForUser(loggedin) , template )) {
+		if(Session.get('diag')) {
+			return 'LayoutSearch';
+		}
+		else if(_.contains(Roles.getRolesForUser(loggedin) , template )) {
 			if(template == 'phy'){
 				return 'LayoutAdmin';
 			}

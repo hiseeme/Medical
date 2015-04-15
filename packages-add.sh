@@ -1,3 +1,5 @@
+meteor remove autopublish
+meteor add insecure
 meteor add accounts-base
 meteor add accounts-password
 meteor add accounts-ui
@@ -13,7 +15,6 @@ meteor add chhib:morris
 meteor add d3
 meteor add email
 meteor add imap
-meteor add insecure
 meteor add meteor-platform
 meteor add mizzao:bootstrap-3
 meteor add mrt:moment
@@ -24,5 +25,7 @@ meteor add sacha:spin
 meteor add styling
 meteor add userman
 meteor add avatar
+meteor add diagnose
+meteor add elevatedevdesign:autoform-nouislider
 meteor add appointment
 meteor add vsivsi:job-collection

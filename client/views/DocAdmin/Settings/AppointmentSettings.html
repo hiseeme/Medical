@@ -1,0 +1,10 @@
+<template name="AppointmentSettings">
+	{{#each days}}
+	<div class="col-lg-2 col-md-2 col-xs-2">
+		{{day}}
+		{{> quickForm id="DocCalendarLayerForm" collection="Doctor" schema="DocSchema.Workplace.calendar" type=formtype }}
+	</div>
+	{{/each}}
+</template>
+
+

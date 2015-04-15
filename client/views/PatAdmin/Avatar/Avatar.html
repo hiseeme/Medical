@@ -1,0 +1,13 @@
+<template name="Avatar">
+Loading...
+	{{#each myArrayWithIndex}}
+		{{> controller}}
+	{{/each}}
+<canvas id="gltest" style="display:none"></canvas>
+<div id="loading-feedback" class="loading-feedback ">Loading...</div>
+<div class ="cow"></div>
+</template>
+
+<template name="controller">
+ <div class="slider{{index}}">HI</div>
+</template>

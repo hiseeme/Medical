@@ -66,6 +66,7 @@ Template.LayoutSearch.helpers({
     'click .fa-sign-out ': function (event) {
 		event.preventDefault();
 		Meteor.logout();
+		Session.set('diag',false);
 		console.log("loggedout doc");
 	},
   });
