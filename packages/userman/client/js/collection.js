@@ -61,41 +61,6 @@ UpdateSchema = {};
 	});
 
 
-Workplaceform = {};
-
-Workplaceform.UserCountry = new SimpleSchema({ 	
-	name: 	{	type: String													},
-	code: 	{	type: String,	regEx: /^[A-Z]{2}$/								}
-	});
-
-Workplaceform.address = new SimpleSchema({ 
-	street :	{	type : String,			optional : true						},
-	pincode:	{	type : Number,				optional : true					},
-	city : 		{	optional : true,				type : String				},
-	country:   	{	type: Workplaceform.UserCountry,	optional: true			},
-}); 
-
-Workplaceform.slots_description = new SimpleSchema({ 
-	start_time:	{	type : Number, optional : true,autoform: {type: "noUiSlider",noUiSliderOptions: {step: 10 },noUiSlider_pipsOptions: {mode:'steps',density: 5}}},
-	end_time:	{	type : Date													},
-});
-//Workplaceform.booked = new SimpleSchema({ 
-	//time:		{	type : Date													},
-	//appointment_id:{type : String												},
-//});
-Workplaceform.slots = new SimpleSchema({ 
-	day :		{	type : String ,	allowedValues: ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]},
-	description:{	type :	[Workplaceform.slots_description]				},
-	//booked :	{	type : [Workplaceform.booked ]							}
-});
-Workplaceform.schema = new SimpleSchema({ 
-	name : 		{	type : String												},
-	address : 	{	type : Workplaceform.address,								}, 
-	type :		{	optional : true,	type : String,	allowedValues: ["Clinic", "Hospital"]},
-	slot_duration:{	type : Number,			optional : true,					},
-	slots_description:{	type : [Workplaceform.slots],							},
-});
-
 DocSchema = {};
 DocSchema.Workplace = {};
 
@@ -112,28 +77,23 @@ DocSchema.Workplace.address = new SimpleSchema({
 	city : 		{	optional : true,				type : String				},
 	country:   	{	type: DocSchema.Workplace.UserCountry,	optional: true			},
 }); 
-DocSchema.Workplace.schema = new SimpleSchema({ 
-	name : 		{	type : String	,					optional : true,		},
-	address : 	{	type : DocSchema.Workplace.address,	optional : true				}, 
-	type :		{	optional : true,	type : String,	allowedValues: ["Clinic", "Hospital"]},
-});
+
 
 ////
 DocSchema.Workplace.slots_description = new SimpleSchema({ 
 	start_time:	{	type : Date			,optional : true,						},
 	end_time:	{	type : Date													},
-	slot_number:{	type : Number												},
-});
-
-DocSchema.Workplace.booked = new SimpleSchema({ 
-	time:		{	type : Date													},
-	slot_number:{	type : Number												},
-	appointment_id:{type : String												},
+	slot_duration:{	type : Number												},
 });
 DocSchema.Workplace.slots = new SimpleSchema({ 
 	day :		{	type : String ,	allowedValues: ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","unaddressed"]},
 	description:{	type :	[DocSchema.Workplace.slots_description] 				},
-	booked :	{	type : [DocSchema.Workplace.booked ]							}
+});
+DocSchema.Workplace.schema = new SimpleSchema({ 
+	name : 		{	type : String	,					optional : true,		},
+	address : 	{	type : DocSchema.Workplace.address,	optional : true				}, 
+	type :		{	optional : true,	type : String,	allowedValues: ["Clinic", "Hospital"]},
+	slots_description:{	type : [DocSchema.Workplace.slots],	optional : true,		},
 });
 ////
 
@@ -158,6 +118,7 @@ DocSchema.schema = new SimpleSchema({
 			allowedValues : ["O+", "O-","A+", "A-","B+", "B-","AB+", "AB-","Unspecified"] 
 																				},   
 	fields :	{	type : DocSchema.fields,									}, 
+	workplaces:	{	type : [DocSchema.Workplace.schema]	,	optional : true		},
 });
 
 DocSchema.Workplaces = new SimpleSchema({
@@ -166,42 +127,3 @@ DocSchema.Workplaces = new SimpleSchema({
 
 Doctor = new Mongo.Collection("doctor");
 Patient = new Mongo.Collection("patients");
-
-DocSchema.eachday = new SimpleSchema({ 
-	start_time:	{	type : Date													},
-	end_time:	{	type : Date													},
-	slot_duration:{	type : Number,												},
-	workplace_index:{type: Number,
-		autoform: {
-			options: function () {
-				return _.map(Doctor.findOne(Meteor.userId()).workplaces, function (c, i) {
-					return {label: "Workplace " + i + ": " + c.name, value: i};
-				});
-			}
-		}
-																				},
-});
-
-DocSchema.Daytype = new SimpleSchema({ 
-	name:		{	type: String												},
-	day :		{	type: [DocSchema.eachday]									},
-});
-
-DocSchema.Calendar = new SimpleSchema({ 
-	calendar:	{	type : [DocSchema.Daytype]	,	optional : true				}, 
-});
-
-
-DocSchema.Workplace.calendar = new SimpleSchema({ 
-	day :		{	type : String ,	allowedValues: ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]},
-	type:{	type : Number,	
-		autoform: {
-			options: function () {
-				return _.map(Doctor.findOne(Meteor.userId()).calendar, function (c, i) {
-					return {label: "Day Type " + i + ": " + c.name, value: i};
-				});
-			}
-		}
-																				},
-});
-

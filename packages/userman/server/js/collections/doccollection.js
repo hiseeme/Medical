@@ -18,7 +18,7 @@ DocSchema.Workplace.address = new SimpleSchema({
 DocSchema.Workplace.slots_description = new SimpleSchema({ 
 	start_time:	{	type : Date			,optional : true,						},
 	end_time:	{	type : Date													},
-	slot_number:{	type : Number												},
+	slot_duration:{	type : Number												},
 });
 
 DocSchema.Workplace.booked = new SimpleSchema({ 
@@ -38,16 +38,6 @@ DocSchema.Workplace.schema = new SimpleSchema({
 	type :		{	optional : true,	type : String,	allowedValues: ["Clinic", "Hospital"]},
 	slot_duration:{	type : Number,			optional : true,					},
 	slots_description:{	type : [DocSchema.Workplace.slots],	optional : true,		},
-});
-DocSchema.eachday = new SimpleSchema({ 
-	workplace_index:{type: Number												},
-	start_time:	{	type : Date													},
-	end_time:	{	type : Date													},
-	slot_duration:{	type : Number,												},
-});
-DocSchema.Calendar = new SimpleSchema({ 
-	name:		{	type: String												},
-	day :		{	type: [DocSchema.eachday]									},
 });
 
 /////////////////////////////
@@ -77,7 +67,6 @@ DocSchema.schema = new SimpleSchema({
 			allowedValues : ["O+", "O-","A+", "A-","B+", "B-","AB+", "AB-","Unspecified"] 
 																				},   
 	fields :	{	type : DocSchema.fields,		optional : true				}, 
-	calendar:	{	type : [DocSchema.Calendar]	,	optional : true				}, 
 	workplaces:	{	type : [DocSchema.Workplace.schema]	,	optional : true		}, 
 	notes :		{ 	type :	[DocSchema.notes],		optional : true				},
 })
