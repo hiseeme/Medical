@@ -1,25 +1,12 @@
 Template.DocSelectedTemplate.helpers({
-  education_details: function() {return this.education_details;},
-  doctor_fields: function() {return this.doctor_fields;},
-  address: function() {return this.address;},
-  city: function() {return this.city;},
   gender: function() {return this.gender.toLowerCase();},
-  name: function() {return this.name;},
   contact_nos: function() {return this.contact_nos;},
-  name: function() {return this.username;},
   email: function() {return this.email_id;},
-  image: function() {return this.image;},
   c_facility : function() {
 		return Workplace.find({"doctor_id":Session.get("doc_id")});
 	},
 });
-Template.DocSelectedTemplate.onCreated(function () {
-  // Use this.subscribe inside onCreated callback
-  
-  
-this.subscribe('docworkplaces', Session.get("doc_id"));
-  
-});
+
 
 Template.DocSelectedTemplate.events({
 	'click .btn': function(e) {

@@ -14,7 +14,7 @@
 		</div>
 		<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
 			<div class="row well">
-			  <div class="col-lg-2 col-lg-offset-2">.{{Symptom}}</div>
+			  <div class="col-lg-2 col-lg-offset-2"><button type="button" class="btn btn-block btn-outline btn-primary">DIAGNOSE</button></div>
 			  <div class=" col-lg-6">
 			  </div>
 			</div>
@@ -44,18 +44,18 @@
 			<div class="panel-heading">
 				<div class="panel-options">
 				<ul class="nav nav-justified">
-					<li class="active"><a data-toggle="tab" href="#tabpatinet"><i class="fa fa-user-md fa-2x"></i>Physician</a></li>
-					<li class=""><a data-toggle="tab" href="#tabadmin"><i class="fa fa-wheelchair fa-2x"></i>Patient</a></li>
+					<li class="active"><a data-toggle="tab" href="#tabdoc"><i class="fa fa-user-md fa-2x"></i>Physician</a></li>
+					<li class=""><a data-toggle="tab" href="#tabdoc"><i class="fa fa-wheelchair fa-2x"></i>Patient</a></li>
 				</ul>
 				</div>
 			</div>
 			<div class="panel-body">
 				<div class="tab-content">
-					<div id="tabpatinet" class="tab-pane active well">
+					<div id="tabdoc" class="tab-pane active well">
 						{{>Dlogin}}
 					</div>
 					<div id="tabadmin" class="tab-pane well">
-						{{>Plogin}}
+						{{Plogin}}
 					</div>
 				</div>
 			</div>

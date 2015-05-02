@@ -32,5 +32,3 @@ var Schema = {};
 	});
 
 Meteor.users.attachSchema(Schema.User);
-
-

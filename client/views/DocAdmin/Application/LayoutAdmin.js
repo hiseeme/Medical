@@ -1,10 +1,7 @@
 Template.LayoutAdmin.onCreated(function () {
   // Use this.subscribe inside onCreated callback
   
-  //this.subscribe('loggeddoctor');
-  this.subscribe('loggeddoc');
-  this.subscribe('files');
-  this.subscribe('docworkplaces',Meteor.userId() );
+  this.subscribe('loggeddoctor');
 });
 
 Template.LayoutAdminLeftPane.rendered = function(){

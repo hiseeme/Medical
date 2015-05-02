@@ -36,23 +36,20 @@ Template.LayoutSearch.rendered = function(){
 
     $("[data-toggle=popover]")
         .popover();
-}
+};
+Template.LayoutSearch.onCreated(function () {
+
+  
+});
 Template.LayoutSearch.helpers({
-	name :  function() {
-		return	Patient.findOne({"_id":Session.get("patient_id")},{'username': 1 ,'_id':0});
+	Patient :  function() {
+		return	Patient.findOne({"_id":Meteor.userId()});
 	},
-	img :  function() {
-		return	Patient.findOne({"_id":Session.get("patient_id")},{'image': 1 ,'_id':0});
-	},
-	profilePic1 :  function() {
-		//patient = Patient.findOne({"_id":Session.get("patient_id")});
-		return Patient.findOne({"_id":Session.get("patient_id")},{'profilePic': 1 ,'_id':0});
-		},
 	template : function() {
 		return Session.get('pat_template');
 	}
 });
-  Template.LayoutSearch.events({
+Template.LayoutSearch.events({
     'click a': function (event) {
 		event.preventDefault();
 		//event.stopImmediatePropagation();
@@ -66,6 +63,7 @@ Template.LayoutSearch.helpers({
     'click .fa-sign-out ': function (event) {
 		event.preventDefault();
 		Meteor.logout();
+		Session.set('diag',false);
 		console.log("loggedout doc");
 	},
-  });
+});

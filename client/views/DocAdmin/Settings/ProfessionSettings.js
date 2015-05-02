@@ -7,12 +7,12 @@ Template.ProfessionSettings.helpers ({
 	}
 });
 
-AutoForm.hooks({
-	DocProfessionSettingsForm : {
-		before:{
-			update: function(doc) {
-				console.log(doc);
-			}
-		}
-	}
-});
+//AutoForm.hooks({
+	//DocProfessionSettingsForm : {
+		//before:{
+			//update: function(doc) {
+				//console.log(doc);
+			//}
+		//}
+	//}
+//});
